@@ -8,7 +8,7 @@ alerting:
 endpoints:
   - name: Leantime
     url: <leantime-url> # WARN: DO NOT CHANGE THIS LINE
-    interval: "30"
+    interval: 30m
     conditions: 
       - "[STATUS] == 200"
       - "[RESPONSE_TIME] < 300"
@@ -21,7 +21,7 @@ endpoints:
 
   - name: Gatus
     url: <gatus-url> # WARN: DO NOT CHANGE THIS LINE
-    interval: "60"
+    interval: 60m
     conditions:
       - "[STATUS] == 200"
       - "[RESPONSE_TIME] < 500"
