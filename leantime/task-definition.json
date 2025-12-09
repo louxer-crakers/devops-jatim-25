@@ -1,6 +1,6 @@
 {
   // FILL IN THE MISSING VALUES BELOW
-  "family": "lks-leantime-app",
+  "Family": "lks-leantime-app",
   "taskRoleArn": "arn:aws:iam::767398027707:role/LabRole",
   "executionRoleArn": "arn:aws:iam::767398027707:role/LabRole",
   "networkMode": "awsvpc",
