@@ -1,13 +1,52 @@
 {
   // FILL IN THE MISSING VALUES BELOW
-  "family": "",
-  "taskRoleArn": "",
-  "executionRoleArn": "",
-  "networkMode": "",
-  "requiresCompatibilities": ???,
-  "cpu": "",
-  "memory": "",
-  "volumes": [],
+  "family": "lks-leantime-app",
+  "taskRoleArn": "arn:aws:iam::767398027707:role/LabRole",
+  "executionRoleArn": "arn:aws:iam::767398027707:role/LabRole",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "1024",
+  "memory": "2048",
+  "volumes": [
+    {
+      "efsVolumeConfiguration": {
+        "authorizationConfig": {
+          "accessPointId": "fsap-0d22374c4482c6b00",
+          "iam": "DISABLED"
+        },
+        "fileSystemId": "fs-01f4e7782ac829928",
+        "rootDirectory": "/",
+        "transitEncryption": "ENABLED"
+      },
+      "name": "lks-pm-userfiles"
+    },
+    {
+      "efsVolumeConfiguration": {
+        "authorizationConfig": {
+          "accessPointId": "fsap-0d22374c4482c6b00",
+          "iam": "DISABLED"
+        },
+        "fileSystemId": "fs-01f4e7782ac829928",
+        "rootDirectory": "/",
+        "transitEncryption": "ENABLED"
+      },
+      "name": "lks-pm-public-files"
+    },
+    {
+      "efsVolumeConfiguration": {
+        "authorizationConfig": {
+          "accessPointId": "fsap-0a7edf486632126c7",
+          "iam": "ENABLED"
+        },
+        "fileSystemId": "fs-01f4e7782ac829928",
+        "rootDirectory": "/",
+        "transitEncryption": "ENABLED"
+      },
+      "name": "lks-pm-plugins"
+    }
+  ],
   // FILL IN THE MISSING VALUES ABOVE
 
   "placementConstraints": [],
@@ -19,30 +58,146 @@
 
   "containerDefinitions": [
     {
-      "name": "leantime",
-      "image": "leantime/leantime:latest",
       "cpu": 0,
-      "essential": true,
-      "volumesFrom": [],
-      "systemControls": [],
-
-      // FILL IN THE MISSING VALUES BELOW
-      "portMappings": [],
-      "secrets": [],
-      "environment": [],
-      "mountPoints": [],
-      "logConfiguration": {
-        "logDriver": "???",
-        "options": {
-          "awslogs-group": "???",
-          "awslogs-region": "???",
-          "mode": "non-blocking",
-          "awslogs-create-group": "true",
-          "max-buffer-size": "25m",
-          "awslogs-stream-prefix": "ecs"
+      "environment": [
+        {
+          "name": "LEAN_PRIMARY_COLOR",
+          "value": "#006d9f"
+        },
+        {
+          "name": "LEAN_USER_FILE_PATH",
+          "value": "/var/www/html/userfiles"
+        },
+        {
+          "name": "PUID",
+          "value": "1000"
+        },
+        {
+          "name": "LEAN_APP_URL",
+          "value": ""
+        },
+        {
+          "name": "LEAN_SITENAME",
+          "value": "Leantime"
+        },
+        {
+          "name": "LEAN_SECONDARY_COLOR",
+          "value": "#00a886"
+        },
+        {
+          "name": "LEAN_LANGUAGE",
+          "value": "en-US"
+        },
+        {
+          "name": "LEAN_DEFAULT_TIMEZONE",
+          "value": "Asia/Jakarta"
+        },
+        {
+          "name": "LEAN_APP_DIR",
+          "value": ""
+        },
+        {
+          "name": "LEAN_LOGO_PATH",
+          "value": "/var/www/html/public/userfiles"
+        },
+        {
+          "name": "LEAN_PORT",
+          "value": "8080"
+        },
+        {
+          "name": "LEAN_USE_S3",
+          "value": "false"
+        },
+        {
+          "name": "LEAN_DB_BACKUP_PATH",
+          "value": "backupdb/"
+        },
+        {
+          "name": "LEAN_DISABLE_LOGIN_FORM",
+          "value": "false"
+        },
+        {
+          "name": "LEAN_PRINT_LOGO_URL",
+          "value": "/var/www/html/public/userfiles"
+        },
+        {
+          "name": "LEAN_LOG_PATH",
+          "value": ""
+        },
+        {
+          "name": "LEAN_DEBUG",
+          "value": "0"
+        },
+        {
+          "name": "PGID",
+          "value": "1000"
         }
-      }
-      // FILL IN THE MISSING VALUES ABOVE
+      ],
+      "environmentFiles": [],
+      "essential": true,
+      "image": "leantime/leantime:latest",
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/lks/leantime-app",
+          "awslogs-create-group": "true",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        },
+        "secretOptions": []
+      },
+      "mountPoints": [
+        {
+          "containerPath": "/var/www/html/userfiles",
+          "readOnly": false,
+          "sourceVolume": "lks-pm-userfiles"
+        },
+        {
+          "containerPath": "/var/www/html/public/userfiles",
+          "readOnly": false,
+          "sourceVolume": "lks-pm-public-files"
+        },
+        {
+          "containerPath": "/var/www/html/app/Plugins",
+          "readOnly": false,
+          "sourceVolume": "lks-pm-plugins"
+        }
+      ],
+      "name": "leantime",
+      "portMappings": [
+        {
+          "appProtocol": "http",
+          "containerPort": 8080,
+          "hostPort": 8080,
+          "name": "leantime-8080-tcp",
+          "protocol": "tcp"
+        }
+      ],
+      "secrets": [
+        {
+          "name": "LEAN_DB_HOST",
+          "valueFrom": "/lks/db/host"
+        },
+        {
+          "name": "LEAN_DB_USER",
+          "valueFrom": "/lks/db/username"
+        },
+        {
+          "name": "LEAN_DB_PASSWORD",
+          "valueFrom": "/lks/db/password"
+        },
+        {
+          "name": "LEAN_DB_DATABASE",
+          "valueFrom": "/lks/db/name"
+        },
+        {
+          "name": "LEAN_DB_PORT",
+          "valueFrom": "/lks/db/port"
+        }
+      ],
+      "systemControls": [],
+      "ulimits": [],
+      "volumesFrom": []
     }
   ]
 }
