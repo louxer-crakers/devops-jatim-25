@@ -50,7 +50,7 @@ jobs:
           force-new-deployment: true
 
   deploygatus:
-    name: Deploy Leantime App
+    name: Deploy Gatus App
     runs-on: ubuntu-latest
     environment: dev
     steps:
