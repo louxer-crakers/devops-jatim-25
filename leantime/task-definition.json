@@ -17,7 +17,7 @@
         },
         "fileSystemId": "fs-01f4e7782ac829928",
         "rootDirectory": "/",
-        "transitEncryption": "ENABLED"
+        "transitEncryption": "DISABLED"
       },
       "name": "lks-pm-userfiles"
     },
