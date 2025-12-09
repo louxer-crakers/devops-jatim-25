@@ -108,6 +108,38 @@
         "secretOptions": []
       },
       "mountPoints": [],
+      "name": "leantime",
+      "portMappings": [
+        {
+          "appProtocol": "http",
+          "containerPort": 8080,
+          "hostPort": 8080,
+          "name": "leantime-8080-tcp",
+          "protocol": "tcp"
+        }
+      ],
+      "secrets": [
+        {
+          "name": "LEAN_DB_HOST",
+          "valueFrom": "/lks/db/host"
+        },
+        {
+          "name": "LEAN_DB_USER",
+          "valueFrom": "/lks/db/username"
+        },
+        {
+          "name": "LEAN_DB_PASSWORD",
+          "valueFrom": "/lks/db/password"
+        },
+        {
+          "name": "LEAN_DB_DATABASE",
+          "valueFrom": "/lks/db/name"
+        },
+        {
+          "name": "LEAN_DB_PORT",
+          "valueFrom": "/lks/db/port"
+        }
+      ],
       "systemControls": [],
       "ulimits": [],
       "volumesFrom": []
