@@ -17,7 +17,7 @@
         },
         "fileSystemId": "fs-01f4e7782ac829928",
         "rootDirectory": "/",
-        "transitEncryption": "DISABLED"
+        "transitEncryption": "ENABLED"
       },
       "name": "lks-pm-userfiles"
     },
@@ -37,7 +37,7 @@
       "efsVolumeConfiguration": {
         "authorizationConfig": {
           "accessPointId": "fsap-0a7edf486632126c7",
-          "iam": "ENABLED"
+          "iam": "DISABLED"
         },
         "fileSystemId": "fs-01f4e7782ac829928",
         "rootDirectory": "/",

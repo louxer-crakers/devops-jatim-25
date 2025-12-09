@@ -71,9 +71,9 @@ jobs:
 
       - name: Update Configuration
         run: |
-          sed -i "s|<github-token>|$TOKEN|g" gatus/config/config.yaml
-          sed -i "s|<leantime-url>|$LEANTIME_URL|g" gatus/config/config.yaml
-          sed -i "s|<gatus-url>|$GATUS_URL|g" gatus/config/config.yaml
+          sed -i "s|<github-token>|${{env.TOKEN}}|g" gatus/config/config.yaml
+          sed -i "s|<leantime-url>|${{env.LEANTIME_URL}}|g" gatus/config/config.yaml
+          sed -i "s|<gatus-url>|${{env.GATUS_URL}}|g" gatus/config/config.yaml
           echo "Cofiguration updated."
           cat gatus/config/config.yaml
 
