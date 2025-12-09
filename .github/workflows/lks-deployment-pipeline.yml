@@ -102,7 +102,6 @@ jobs:
           cluster: ${{ env.ECS_CLUSTER }}
           force-new-deployment: true
 
-
       - name: deploy ecs task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:

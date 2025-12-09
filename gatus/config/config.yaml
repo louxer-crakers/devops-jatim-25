@@ -31,4 +31,17 @@ endpoints:
         success-threshold: 5
         send-on-resolved: true
         description: "Sensei, Gatus is down! Please check and fix it."
+
+  - name: Nginx thesaes
+    url: http://44.213.74.33 # WARN: DO NOT CHANGE THIS LINE
+    interval: 60m
+    conditions:
+      - "[STATUS] == 200"
+      - "[RESPONSE_TIME] < 500"
+    alerts:
+      - type: github
+        failure-threshold: 3
+        success-threshold: 5
+        send-on-resolved: true
+        description: "Sensei, Thesa is down! Please check and fix it."
 # FILL IN THE MISSING VALUES BELOW
