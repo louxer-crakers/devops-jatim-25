@@ -8,7 +8,44 @@
   ],
   "cpu": "1024",
   "memory": "2048",
-  "volumes": [],
+  "volumes": [
+    {
+      "efsVolumeConfiguration": {
+        "authorizationConfig": {
+          "accessPointId": "fsap-0d22374c4482c6b00",
+          "iam": "DISABLED"
+        },
+        "fileSystemId": "fs-01f4e7782ac829928",
+        "rootDirectory": "/",
+        "transitEncryption": "ENABLED"
+      },
+      "name": "lks-pm-userfiles"
+    },
+    {
+      "efsVolumeConfiguration": {
+        "authorizationConfig": {
+          "accessPointId": "fsap-0d22374c4482c6b00",
+          "iam": "DISABLED"
+        },
+        "fileSystemId": "fs-01f4e7782ac829928",
+        "rootDirectory": "/",
+        "transitEncryption": "ENABLED"
+      },
+      "name": "lks-pm-public-files"
+    },
+    {
+      "efsVolumeConfiguration": {
+        "authorizationConfig": {
+          "accessPointId": "fsap-0a7edf486632126c7",
+          "iam": "DISABLED"
+        },
+        "fileSystemId": "fs-01f4e7782ac829928",
+        "rootDirectory": "/",
+        "transitEncryption": "ENABLED"
+      },
+      "name": "lks-pm-plugins"
+    }
+  ],
 
   "placementConstraints": [],
   "runtimePlatform": {
@@ -107,7 +144,23 @@
         },
         "secretOptions": []
       },
-      "mountPoints": [],
+      "mountPoints": [
+        {
+          "containerPath": "/var/www/html/userfiles",
+          "readOnly": false,
+          "sourceVolume": "lks-pm-userfiles"
+        },
+        {
+          "containerPath": "/var/www/html/public/userfiles",
+          "readOnly": false,
+          "sourceVolume": "lks-pm-public-files"
+        },
+        {
+          "containerPath": "/var/www/html/app/Plugins",
+          "readOnly": false,
+          "sourceVolume": "lks-pm-plugins"
+        }
+      ],
       "name": "leantime",
       "portMappings": [
         {
