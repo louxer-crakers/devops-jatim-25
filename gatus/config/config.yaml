@@ -9,7 +9,7 @@ alerting:
 endpoints:
   - name: Leantime
     url: <leantime-url> # WARN: DO NOT CHANGE THIS LINE
-    interval: 30m
+    interval: 30s
     conditions: 
       - "[STATUS] == 200"
       - "[RESPONSE_TIME] < 300"
@@ -22,7 +22,7 @@ endpoints:
 
   - name: Gatus
     url: <gatus-url> # WARN: DO NOT CHANGE THIS LINE
-    interval: 60m
+    interval: 60s
     conditions:
       - "[STATUS] == 200"
       - "[RESPONSE_TIME] < 500"
@@ -34,8 +34,8 @@ endpoints:
         description: "Sensei, Gatus is down! Please check and fix it."
 
   - name: Nginx thesaes
-    url: http://100.28.220.136 # WARN: DO NOT CHANGE THIS LINE
-    interval: 60m
+    url: http://3.236.224.65 # WARN: DO NOT CHANGE THIS LINE
+    interval: 60s
     conditions:
       - "[STATUS] == 200"
       - "[RESPONSE_TIME] < 500"
