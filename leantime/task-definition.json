@@ -8,44 +8,7 @@
   ],
   "cpu": "1024",
   "memory": "2048",
-  "volumes": [
-    {
-      "efsVolumeConfiguration": {
-        "authorizationConfig": {
-          "accessPointId": "fsap-0d22374c4482c6b00",
-          "iam": "DISABLED"
-        },
-        "fileSystemId": "fs-01f4e7782ac829928",
-        "rootDirectory": "/",
-        "transitEncryption": "ENABLED"
-      },
-      "name": "lks-pm-userfiles"
-    },
-    {
-      "efsVolumeConfiguration": {
-        "authorizationConfig": {
-          "accessPointId": "fsap-0d22374c4482c6b00",
-          "iam": "DISABLED"
-        },
-        "fileSystemId": "fs-01f4e7782ac829928",
-        "rootDirectory": "/",
-        "transitEncryption": "ENABLED"
-      },
-      "name": "lks-pm-public-files"
-    },
-    {
-      "efsVolumeConfiguration": {
-        "authorizationConfig": {
-          "accessPointId": "fsap-0a7edf486632126c7",
-          "iam": "DISABLED"
-        },
-        "fileSystemId": "fs-01f4e7782ac829928",
-        "rootDirectory": "/",
-        "transitEncryption": "ENABLED"
-      },
-      "name": "lks-pm-plugins"
-    }
-  ],
+  "volumes": [],
 
   "placementConstraints": [],
   "runtimePlatform": {
@@ -144,55 +107,7 @@
         },
         "secretOptions": []
       },
-      "mountPoints": [
-        {
-          "containerPath": "/var/www/html/userfiles",
-          "readOnly": false,
-          "sourceVolume": "lks-pm-userfiles"
-        },
-        {
-          "containerPath": "/var/www/html/public/userfiles",
-          "readOnly": false,
-          "sourceVolume": "lks-pm-public-files"
-        },
-        {
-          "containerPath": "/var/www/html/app/Plugins",
-          "readOnly": false,
-          "sourceVolume": "lks-pm-plugins"
-        }
-      ],
-      "name": "leantime",
-      "portMappings": [
-        {
-          "appProtocol": "http",
-          "containerPort": 8080,
-          "hostPort": 8080,
-          "name": "leantime-8080-tcp",
-          "protocol": "tcp"
-        }
-      ],
-      "secrets": [
-        {
-          "name": "LEAN_DB_HOST",
-          "valueFrom": "/lks/db/host"
-        },
-        {
-          "name": "LEAN_DB_USER",
-          "valueFrom": "/lks/db/username"
-        },
-        {
-          "name": "LEAN_DB_PASSWORD",
-          "valueFrom": "/lks/db/password"
-        },
-        {
-          "name": "LEAN_DB_DATABASE",
-          "valueFrom": "/lks/db/name"
-        },
-        {
-          "name": "LEAN_DB_PORT",
-          "valueFrom": "/lks/db/port"
-        }
-      ],
+      "mountPoints": [],
       "systemControls": [],
       "ulimits": [],
       "volumesFrom": []
