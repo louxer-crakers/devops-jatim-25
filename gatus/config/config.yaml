@@ -1,6 +1,7 @@
 # FILL IN THE MISSING VALUES BELOW
 alerting:
-  ???:
+  github:
+    repository-url: "https://github.com/louxer-crakers/devops-jatim-25"
     token: "<github-token>" # WARN: DO NOT CHANGE THIS LINE
 # FILL IN THE MISSING VALUES ABOVE
 
