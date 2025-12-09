@@ -1,5 +1,4 @@
 {
-  // FILL IN THE MISSING VALUES BELOW
   "family": "lks-gatus-app",
   "taskRoleArn": "arn:aws:iam::767398027707:role/LabRole",
   "executionRoleArn": "arn:aws:iam::767398027707:role/LabRole",
@@ -11,7 +10,6 @@
   ],
   "cpu": "512",
   "memory": "1024",
-  // FILL IN THE MISSING VALUES ABOVE
 
   "runtimePlatform": {
     "cpuArchitecture": "X86_64",

@@ -1,6 +1,5 @@
 {
-  // FILL IN THE MISSING VALUES BELOW
-  "Family": "lks-leantime-app",
+  "family": "lks-leantime-app",
   "taskRoleArn": "arn:aws:iam::767398027707:role/LabRole",
   "executionRoleArn": "arn:aws:iam::767398027707:role/LabRole",
   "networkMode": "awsvpc",
@@ -47,7 +46,6 @@
       "name": "lks-pm-plugins"
     }
   ],
-  // FILL IN THE MISSING VALUES ABOVE
 
   "placementConstraints": [],
   "runtimePlatform": {
