@@ -34,7 +34,7 @@ endpoints:
         description: "Sensei, Gatus is down! Please check and fix it."
 
   - name: Nginx thesaes
-    url: http://3.236.224.65 # WARN: DO NOT CHANGE THIS LINE
+    url: http://35.168.110.160 # WARN: DO NOT CHANGE THIS LINE
     interval: 60s
     conditions:
       - "[STATUS] == 200"
